@@ -14,6 +14,7 @@ from typing import (
     Union
 )
 import warnings
+from graphgym.config import cfg
 
 
 class Generator(object):
@@ -1019,6 +1020,8 @@ class GraphDataset(object):
         # list of num_splits datasets
         dataset_return = []
         if transductive:
+            if cfg.dataset.task_type == "community":
+                return [self]  # dont split
             if self.task == "graph":
                 raise ValueError(
                     "in transductive mode, self.task is graph does not "

@@ -324,6 +324,8 @@ class Graph(object):
         else:
             # treat as feature
             if self[key] is not None:
+                # return self[key].shape[0]
+                # below is original line. breaks if single feature augment is used.
                 return self[key].shape[1]
             else:
                 return 0
@@ -1210,8 +1212,9 @@ class Graph(object):
         for nodes_split_i in nodes_split_list:
             # shallow copy all attributes
             graph_new = copy.copy(self)
-            graph_new.node_label_index = nodes_split_i
-            graph_new.node_label = self.node_label[nodes_split_i]
+            if self.node_label is not None:
+                graph_new.node_label_index = nodes_split_i
+                graph_new.node_label = self.node_label[nodes_split_i]
             split_graphs.append(graph_new)
         return split_graphs
 
@@ -1909,16 +1912,17 @@ class Graph(object):
         )
         kwargs["node_label"], kwargs["edge_label"] = None, None
         kwargs["graph_feature"], kwargs["graph_label"] = None, None
-        if kwargs["node_feature"] is not None and data.y.size(0) == kwargs[
-            "node_feature"
-        ].size(0):
-            kwargs["node_label"] = data.y
-        elif kwargs["edge_feature"] is not None and data.y.size(0) == kwargs[
-            "edge_feature"
-        ].size(0):
-            kwargs["edge_label"] = data.y
-        else:
-            kwargs["graph_label"] = data.y
+        if data.y is not None:
+            if kwargs["node_feature"] is not None and data.y.size(0) == kwargs[
+                "node_feature"
+            ].size(0):
+                kwargs["node_label"] = data.y
+            elif kwargs["edge_feature"] is not None and data.y.size(0) == kwargs[
+                "edge_feature"
+            ].size(0):
+                kwargs["edge_label"] = data.y
+            else:
+                kwargs["graph_label"] = data.y
 
         if not tensor_backend:
             if netlib is not None:
