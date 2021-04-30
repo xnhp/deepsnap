@@ -1,15 +1,15 @@
 # DeepSNAP
 
-[![PyPI](https://img.shields.io/pypi/v/deepsnap.svg)](https://pypi.org/project/deepsnap/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/snap-stanford/deepsnap/blob/master/LICENSE) ![Build Status](https://travis-ci.org/snap-stanford/deepsnap.svg?branch=master)
+[![PyPI](https://img.shields.io/pypi/v/deepsnap.svg?color=brightgreen)](https://pypi.org/project/deepsnap/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/snap-stanford/deepsnap/blob/master/LICENSE) [![Build Status](https://travis-ci.org/snap-stanford/deepsnap.svg?branch=master)](https://travis-ci.org/github/snap-stanford/deepsnap) [![Downloads](https://pepy.tech/badge/deepsnap)](https://pepy.tech/project/deepsnap) [![Repo size](https://img.shields.io/github/repo-size/snap-stanford/deepsnap?color=yellow)](https://github.com/snap-stanford/deepsnap/archive/refs/heads/master.zip)
 
-[Full Documentation](https://snap.stanford.edu/deepsnap/)
+**[Documentation](https://snap.stanford.edu/deepsnap/)** | **[Examples](https://github.com/snap-stanford/deepsnap/tree/master/examples)** | **[Colab Notebooks](https://snap.stanford.edu/deepsnap/notes/colab.html)**
 
 DeepSNAP is a Python library to assist efficient deep learning on graphs. 
 DeepSNAP features in its support for flexible graph manipulation, standard pipeline, heterogeneous graphs and simple API.
 
 DeepSNAP bridges powerful graph libraries such as [NetworkX](https://networkx.github.io/) and deep learning framework [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest). With an intuitive and easy-than-ever API, DeepSNAP addresses the above pain points:
 
-- DeepSNAP currently supports a NetworkX-based backend, allowing users to seamlessly call hundreds of graph algorithms available to manipulate / transform the graphs, even at every training iteration. (Look forward to other backends such as Snap.py for future release).
+- DeepSNAP currently supports a NetworkX-based backend (also SnapX-based backend for homogeneous undirected graph), allowing users to seamlessly call hundreds of graph algorithms available to manipulate / transform the graphs, even at every training iteration.
 - DeepSNAP provides a standard pipeline for dataset split, negative sampling and defining node/edge/graph-level objectives, which are transparent to users.
 - DeepSNAP provides efficient support for flexible and general heterogeneous GNNs, that supports both node and edge heterogeneity, and allows users to control how messages are parameterized and passed.
 - DeepSNAP has an easy-to-use API that works seamlessly with existing GNN models / datasets implemented in PyTorch Geometric. There is close to zero learning curve if the user is familiar with PyTorch Geometric.
@@ -21,7 +21,7 @@ To install the DeepSNAP, ensure [PyTorch Geometric](https://pytorch-geometric.re
 ```sh
 $ pip install deepsnap
 ```
-Or you can install the latest version via:
+Or build from source:
 ```sh
 $ git clone https://github.com/snap-stanford/deepsnap
 $ cd deepsnap
@@ -30,7 +30,7 @@ $ pip install .
 
 # Example
 
-Examples for using DeepSNAP are provided with the code repository.
+Examples using DeepSNAP are provided within the code repository.
 
 ```sh
 $ git clone https://github.com/snap-stanford/deepsnap

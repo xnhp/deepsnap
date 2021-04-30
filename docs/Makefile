@@ -10,3 +10,9 @@ help:
 
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)"
+
+.PHONY: clean
+clean:
+	rm -rf build
+	rm -rf source/deepsnap.rst
+	rm -rf source/modules.rst
